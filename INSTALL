@@ -1,0 +1,120 @@
+To install this software you must first have a web server that is
+configured to run CGI applications. 
+
+The installation process of this software is not automated. It must
+be done by hand.
+
+The steps you must perform to install this software are compilation,
+web page installation, and binary installation.
+
+These instructions assume that your webserver is installed in 
+/home/httpd and that you're using Apache.  You may need to 
+account for differences in your web server software installation.
+
+Compilation
+-----------
+This software has been designed to make use of the GNU build tools.
+To compile this software, you must first run the configuration
+script.  Next, you must run make to do the actual compilations.
+Do this as so:
+
+bash$ ./configure
+bash$ make
+
+This software makes use of no special non-standard libraries.  If you
+install a Linux system with development tools, you will be able to
+build this software with the above commands. If you wish to run this
+software on a system with out build tools, you may build it on
+another machine and copy it to the system you wish to run it on.
+However, it is best to build the software on the system you intend
+to run on.
+
+Web Page Installation
+---------------------
+The installation of the web pages is accomplished by copying the
+contents of the html directory in the root directory of this
+archive to an appropriate location under your web servers htdocs
+directory.
+
+This would be done as so:
+
+bash$ mkdir /home/httpd/htdocs/sample_size
+bash$ cp html/* /home/httpd/htdocs/sample_size
+
+
+Binary Installation
+-------------------
+To install the binary of this application rename it to .cgi and copy
+it to the appropriate web directory. Finally, set the permissions
+on the binary file to allow the application to be executed by the
+web server.
+
+This would be done as so:
+
+bash$ cp src/sample_size /home/httpd/htdocs/sample_size/sample_size.cgi
+bash$ chmod 755 /home/httpd/htdocs/sample_size/sample_size.cgi
+
+Web Server Configuration
+------------------------
+This section specifically deals with the configuration of a Apache
+web server.  You may need to make adjustments to this instructions
+if you choose to run with different web server software.
+
+A '-' denotes the old version of text that is modified, a '+' 
+indicates the replacement text.  An absence of a prefix represents
+a line that has not be changed.
+
+Instructions for Apache v.2.0.x:
+
+	Edit the file /home/httpd/conf/httpd.conf to include the ExecCGI
+	directive in its main stanza as so:
+
+	<Directory "/home/httpd/htdocs">
+-		Options Indexes FollowSymLinks
++		Options Indexes FollowSymLinks ExecCGI
+		AllowOverride None
+		Order allow,deny
+		Allow from all
+	</Directory>
+
+	Then uncomment the line which invokes the cgi handler for files
+	ending in .cgi as so:
+
+-	#AddHandler cgi-script .cgi
++	AddHandler cgi-script .cgi
+
+	
+Instructions for Apache v.1.3.x:
+
+	Edit the file /etc/httpd/conf/httpd.conf to include the ExecCGI
+	directive in its main stanza as so:
+
+	# First, we configure the "default" to be a very restrictive set of
+	# permissions.
+	#
+
+	<Directory "/var/www/html">
+
+	#
+	# This may also be "None", "All", or any combination of "Indexes",
+	# "Includes", "FollowSymLinks", "ExecCGI", or "MultiViews".
+	#
+	# Note that "MultiViews" must be named *explicitly* --- "Options All"
+	# doesn't give it to you.
+	#
+-	Options Indexes FollowSymLinks
++	Options Indexes FollowSymLinks ExecCGI
+	AllowOverride None
+	</Directory>
+
+	Then uncomment the line which invokes the cgi handler for files
+	ending in .cgi as so:
+
+-	#AddHandler cgi-script .cgi
++	AddHandler cgi-script .cgi
+
+
+This is sufficient configuration for the Apache web server.
+You may choose to implement restrictions based on ip address
+or user name and password.
+

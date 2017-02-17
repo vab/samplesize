@@ -1,0 +1,21 @@
+/* xstage2t2c.h - header file for program to calculation
+ * two stage conclude h1 sample sizes.
+ * Copyright (C) 2002-2003 James L. Kepner, Ph.D.
+ * james.kepner@roswellpark.org
+ *
+ * This file is part of the Sample Size Calculator.
+ *
+ * This file is copyright James L. Kepner, Ph.D.
+ * All rights reserved.
+ *
+ */
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+#include "nstage1.h"
+#include "display_results.h"
+#include "email_results.h"
+
+int two_stage_h1(double, double, double, double, int, char *);
