@@ -19,3 +19,4 @@
 1.0.2 2003.04.08 Bug Fix Release
    - Correct of bug which fails to list b+1 as rejection region
 1.0.3 2005.09.06 HTML Formatting fix for Kepner's move to ACS
+1.0.4 2018.01.23 GNU Autotools updates

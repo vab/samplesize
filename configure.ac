@@ -1,6 +1,7 @@
 ss this file with autoconf to produce a configure script.
-AC_INIT
-AM_INIT_AUTOMAKE(sample_size,1.0.3)
+AC_INIT(sample_size,1.0.4)
+AC_CONFIG_SRCDIR([src/sample_size.c])
+AM_INIT_AUTOMAKE
 
 dnl Checks for programs.
 AC_PROG_CC(gcc, cc)
