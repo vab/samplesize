@@ -38,7 +38,7 @@ void print_footer(void)
 {
 	printf("<HR SIZE=0 WIDTH=100%%>\n");
 	printf("<CENTER><H6>Kepner Sample Size Calculator\n");
-	printf("<BR>Implemented in C by <A HREF=\"http://cryptnet.net/people/vab/\">V. Alex Brennen</A> [<A HREF=\"mailto:codepoet@dublin.ie\">codepoet@dublin.ie</A>]</H6></CENTER>\n");
+	printf("<BR>Implemented in C by <A HREF=\"http://cryptnet.net/people/vab/\">V. Alex Brennen</A> [<A HREF=\"mailto:vab@protonmail.com\">vab@protonmail.com</A>]</H6></CENTER>\n");
 	printf("</BODY></HTML>\n");
 
 	return;
@@ -52,19 +52,18 @@ void do_error_page(char *error)
 	printf("The following Sample Size System Error Occurred:\n");
 	printf("%s\n",error);
 	printf("</BODY></HTML>\n\n");
+
+	return;
 }
 
 struct name_value_pair_dllst *parse_name_value_pairs(char *data)
 {
 	struct name_value_pair_dllst *cgidata = NULL;
-	struct name_value_pair_dllst *current = NULL;
 
 	char *dataptr = NULL;
-        char *name = NULL;
-        char *value = NULL;
-        char *value_2 = NULL;
-        char *true_name = NULL;
-        char *true_value = NULL;
+    char *name = NULL;
+    char *true_name = NULL;
+    char *true_value = NULL;
 
 
 	cgidata = (struct name_value_pair_dllst *)malloc(sizeof(struct name_value_pair_dllst));
@@ -80,13 +79,11 @@ struct name_value_pair_dllst *parse_name_value_pairs(char *data)
 	cgidata->name = NULL;
 	cgidata->value = NULL;
 
-	current = cgidata;
-
 	dataptr = &data[0];
 
-        name = (char *)strtok(dataptr,"&");
-        do
-        {
+    name = (char *)strtok(dataptr,"&");
+    do
+    {
 		true_name = &name[0];
 		true_value = (char *)memchr(name,'=',strlen(name));
 		true_value[0] = '\0';
@@ -110,7 +107,7 @@ struct name_value_pair_dllst *parse_name_value_pairs(char *data)
 		cgidata->name = NULL;
 		cgidata->value = NULL;
 
-        } while(name = (char *)strtok('\0',"&"));
+    } while((name = (char *)strtok('\0',"&")));
 	cgidata = cgidata->prev;
 	free(cgidata->next);
 	cgidata->next=NULL;

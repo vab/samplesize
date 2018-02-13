@@ -15,7 +15,7 @@
 /* one Stage Results */
 int email_results_one_stage(char *study_type, int n, int ss, double size, double power, char *address)
 {
-	FILE	*sendmail;
+	FILE	*sendmail = NULL;
 
 	/* open up a pipe to sendmail */
 	sendmail = popen("/usr/sbin/sendmail -t", "w");
@@ -89,7 +89,7 @@ int email_results_one_stage(char *study_type, int n, int ss, double size, double
 /* Two Stage Results */
 int email_results_two_stage_h1(char *study_type,int n1,int b1,int n2,int b2,double prob1,double prob2,double e1,double e2, double asn, char *address)
 {
-	FILE	*sendmail;
+	FILE	*sendmail = NULL;
 
 	/* open up a pipe to sendmail */
 	sendmail = popen("/usr/sbin/sendmail -t", "w");
@@ -177,7 +177,7 @@ int email_results_two_stage_h1(char *study_type,int n1,int b1,int n2,int b2,doub
 
 int email_results_two_stage_h0(char *study_type,int n1,int b1,int n2,int b2,double prob1,double prob2,double e1,double e2, double asn, char *address)
 {
-	FILE	*sendmail;
+	FILE	*sendmail = NULL;
 
 	/* open up a pipe to sendmail */
 	sendmail = popen("/usr/sbin/sendmail -t", "w");
@@ -265,7 +265,7 @@ int email_results_two_stage_h0(char *study_type,int n1,int b1,int n2,int b2,doub
 int email_results_two_stage_h0_h1(char *study_type, int n1,int a1,int b1,int n2,int b2,
     double prob1, double prob2, double e1, double e2, double asn, char *address)
 {
-	FILE	*sendmail;
+	FILE	*sendmail = NULL;
 
 	/* open up a pipe to sendmail */
 	sendmail = popen("/usr/sbin/sendmail -t", "w");
@@ -357,7 +357,7 @@ int email_results_two_stage_h0_h1(char *study_type, int n1,int a1,int b1,int n2,
 int email_results_three_stage_h0(int n1, int b1, int n2, int b2, int n3, int b3,
 	double prob1, double prob2, double e1, double e2, double asn, char *address)
 {
-	FILE	*sendmail;
+	FILE	*sendmail = NULL;
 
 	/* open up a pipe to sendmail */
 	sendmail = popen("/usr/sbin/sendmail -t", "w");
@@ -452,7 +452,7 @@ int email_results_three_stage_h0(int n1, int b1, int n2, int b2, int n3, int b3,
 int email_results_three_stage_h1(char *study_type, int n1,int b1,int n2,int b2,int n3,int b3,
                   double prob1, double prob2, double e1, double e2, double asn, char *address)
 {
-	FILE	*sendmail;
+	FILE	*sendmail = NULL;
 
 	/* open up a pipe to sendmail */
 	sendmail = popen("/usr/sbin/sendmail -t", "w");
@@ -547,7 +547,7 @@ int email_results_three_stage_h1(char *study_type, int n1,int b1,int n2,int b2,i
 int email_results_three_stage_h0_h1(int n1, int a1, int b1, int n2, int a2, int b2, int n3, int b3,
 	double prob1, double prob2, double e1, double e2, double asn, char *address)
 {
-	FILE	*sendmail;
+	FILE	*sendmail = NULL;
 
 	/* open up a pipe to sendmail */
 	sendmail = popen("/usr/sbin/sendmail -t", "w");
@@ -646,9 +646,10 @@ int email_results_three_stage_h0_h1(int n1, int a1, int b1, int n2, int a2, int 
 }
 
 
+/* Two Sample Results */
 int email_results_two_sample_one_stage(char *study_type, int n, int ss, int jj, double size, double power, char *address)
 {
-	FILE	*sendmail;
+	FILE	*sendmail = NULL;
 
 	/* open up a pipe to sendmail */
 	sendmail = popen("/usr/sbin/sendmail -t", "w");
@@ -688,7 +689,7 @@ int email_results_two_sample_one_stage(char *study_type, int n, int ss, int jj, 
 int email_results_two_sample_two_stage_h1(char *study_type, int n1, int b1, int n2, int b2,
                   double prob1, double prob2, double e1, double e2, double asn, char *address)
 {
-	FILE	*sendmail;
+	FILE	*sendmail = NULL;
 
 	/* open up a pipe to sendmail */
 	sendmail = popen("/usr/sbin/sendmail -t", "w");
@@ -730,7 +731,7 @@ int email_results_two_sample_two_stage_h1(char *study_type, int n1, int b1, int 
 int email_resluts_two_sample_two_stage_h0(char *study_type, int n1, int b1, int n2, int b2,
                   double prob1, double prob2, double e1, double e2, double asn, char *address)
 {
-	FILE	*sendmail;
+	FILE	*sendmail = NULL;
 
 	/* open up a pipe to sendmail */
 	sendmail = popen("/usr/sbin/sendmail -t", "w");
@@ -773,7 +774,7 @@ int email_resluts_two_sample_two_stage_h0(char *study_type, int n1, int b1, int 
 int email_results_two_sample_two_stage_h0_h1(char *study_type,int n1,int a1,int b1,int n2,int b2,
     double prob1, double prob2, double e1, double e2, double asn, char *address)
 {
-	FILE	*sendmail;
+	FILE	*sendmail = NULL;
 
 	/* open up a pipe to sendmail */
 	sendmail = popen("/usr/sbin/sendmail -t", "w");
@@ -798,10 +799,10 @@ int email_results_two_sample_two_stage_h0_h1(char *study_type,int n1,int a1,int 
 	fprintf(sendmail,"<P><B>&nbsp; &nbsp; &nbsp; <FONT COLOR=green>Decision Rules: </FONT></B><UL>\n");
 	fprintf(sendmail,"<p>Accrue n1 = %d to each treatment\n", n1);
 	fprintf(sendmail,"<p>Conclude H0 if S1-T1 &lt; %d. Conclude H1 if S1-T1 &gt; %d\n", a1, b1);
-	fprintf(sendmail,"<p>Otherwise, accrue n2 = %d additional patients to each treatment.\n",n2);
+	fprintf(sendmail,"<p>Otherwise, accrue n2 = %d additional patients to each treatment.\n", n2);
 	fprintf(sendmail,"<br>\n");
-	fprintf(sendmail,"<p>Conclude H1 only if %d &lt;= S1-T1 &gt;= %d\n", a1,b1);
-	fprintf(sendmail,"<p>and S1-T1+S2-T2 &gt; %d.\n",b2);
+	fprintf(sendmail,"<p>Conclude H1 only if %d &lt;= S1-T1 &gt;= %d\n", a1, b1);
+	fprintf(sendmail,"<p>and S1-T1+S2-T2 &gt; %d.\n", b2);
 	fprintf(sendmail,"<p>alpha = %10.8f power = %10.8f e1 = %10.8f e2 = %10.8f asn = %10.8f\n", prob1, prob2, e1, e2, asn);
 	fprintf(sendmail,"</ul>\n");
 

@@ -14,8 +14,8 @@
 
 void free_name_value_pair_dllst(struct name_value_pair_dllst *the_list)
 {
-	struct name_value_pair_dllst *walk_pair;
-	struct name_value_pair_dllst *next_pair;
+	struct name_value_pair_dllst *walk_pair = NULL;
+	struct name_value_pair_dllst *next_pair = NULL;
 
 	if(the_list != NULL)
 	{
@@ -60,7 +60,6 @@ char *get_value(struct name_value_pair_dllst *the_list,char *name)
 
 	return the_list->value;
 }
-
 
 struct value_dllst *get_first_value(struct value_dllst *values)
 {

@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 	method = (char *)getenv("REQUEST_METHOD");
 
 	if(method == NULL)
-        {
+    {
 		/* Program is probably being run from command Line. */
 		do_error_page("The method is null.  You cannot run this program from the command line.\n");
 
@@ -71,21 +71,45 @@ int main(int argc, char *argv[])
 		}
 		/* Read in the QUERY */
 		content = (char *)malloc(content_length+1);
-                if(content == NULL)
-                {
-                        do_error_page("Server was unable to malloc memory.  Server out of memory.");
+        if(content == NULL)
+        {
+            do_error_page("Server was unable to malloc memory.  Server out of memory.");
 
 			return 0;
 		}
-                fread(content,1,content_length,stdin);
-                content[content_length] = '\0';
+        size_t ret = fread(content,1,content_length,stdin);
+        if(ret == 0)
+        {
+        	if(feof(stdin))
+        	{
+        		do_error_page("Received premature end of data stream. Failed to read values from browser.");
+        	}
+        	else if(ferror(stdin))
+        	{
+        		do_error_page("Error occurred while reading data stream. Failed to read values from browser.");
+        	}
+        	else
+        	{
+        		do_error_page("Unknown error occurred while reading data stream. Failed to read values from browser.");
+        	}
+
+        	return 0;
+
+        }
+        content[content_length] = '\0';
 
 		/* Process the CGI Form. */
 		form = parse_name_value_pairs(content);
+		if(form == NULL)
+		{
+			do_error_page("Data formatting error. Failed to parse browser data.");
+
+			return 0;
+		}
 	}
 	else
 	{
-		/* This should never occur.  Must be some type of corruption. */
+		/* This should never occur.  Must be some type of data corruption. */
 		do_error_page("There was some type of corruption of the method variable. Non-Compliant web browser?");
 
 		return 0;

@@ -20,8 +20,8 @@
 
 struct name_value_pair_dllst
 {
-	unsigned char *name;
-	unsigned char *value;
+	char *name;
+	char *value;
 
 	struct name_value_pair_dllst *prev;
 	struct name_value_pair_dllst *next;
