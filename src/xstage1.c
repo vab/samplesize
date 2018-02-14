@@ -101,7 +101,6 @@ int one_stage(double alpha, double delta, double p0, double powr, int mail, char
 			}
 		}  /* end do 4 */
 
-
 	} /* end do 15 */
 
 #ifdef DEBUG_PRINT

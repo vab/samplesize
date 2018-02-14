@@ -13,8 +13,8 @@
 #include "display_results.h"
 
 /*  #define DEBUG_PRINT */
-// #define SUPER_DEBUG_PRINT 
-#define NORMAL 
+ #define SUPER_DEBUG_PRINT 
+// #define NORMAL
 
 int print_results_one_stage(char *study_type, int n, int ss, double size, double power)
 {
@@ -447,7 +447,7 @@ int print_resluts_two_sample_two_stage_h0(char *study_type, int n1, int b1, int 
 	printf("<P><B>&nbsp; &nbsp; &nbsp; <FONT COLOR=green>Decision Rules: </FONT></B><UL>\n");
 	/* TODO:  This might be bbest instead of b1 below. */
 	printf("<p>n1 = %d, to each treatment. Conclude H0 if S1-T1 &lt;= %d\n",n1, b1);
-	printf("<p>Otherwise, accrue n2 = %d additional subjects to each treatment.\n", n2); 
+	printf("<p>Otherwise, accrue n2 = %d additional subjects to each treatment.\n", n2);
 	printf("<p>Conclude H1 if (S1-T1) &gt; %d and ST-T1+S2-T2 &gt; %d\n",b1,b2);
 	printf("<p>alpha = %10.8f power = %10.8f e1 = %10.8f e2 = %10.8f asn = %10.8f\n", prob1, prob2, e1, e2, asn);
 	printf("</ul>\n");

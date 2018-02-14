@@ -11,6 +11,8 @@
 
 #include "sample_size.h"
 
+static void setlimit(void);
+
 
 int main(int argc, char *argv[])
 {
@@ -156,7 +158,7 @@ int main(int argc, char *argv[])
 	if((mail) && (val_6 == NULL))
 	{
 		do_error_page("You must enter a valid email address if you would like to have the the study results emailed to you..");
-		
+
 		return 0;
 	}
 	else if(mail == 1)
@@ -190,7 +192,7 @@ int main(int argc, char *argv[])
 		printf("<P><B>Test Values:</B> alpha: %f, delta: %f, p0: %f, power: %f\n",alpha,delta,p0,power);
 		printf("<P>If no results appear, please resubmit your request and ask to have the results emailed to you.\n");
 		printf("<P>Please Wait, Calculating...\n");
-		
+
 		fflush(0);
 	}
 
@@ -258,7 +260,7 @@ int main(int argc, char *argv[])
 
 	free_name_value_pair_dllst(form);
 
-	
+
 	return 0;
 }
 
@@ -280,6 +282,6 @@ static void setlimit(void)
 
 		return;
 	}
-	
+
 	return;
 }

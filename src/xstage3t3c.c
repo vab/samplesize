@@ -19,10 +19,10 @@ struct solution_array
 };
 
 
-int three_stage_h0_h1(double alpha, double delta, double p0, 
+int three_stage_h0_h1(double alpha, double delta, double p0,
 			double powr, int mail, char *address)
 {
-	int a1 = 0,a2 = 0,a11 = 0,a21 = 0,b21 = 0,b31 = 0,bb1 = 0,bb2 = 0,b12 = 0,b22 = 0;
+	int a1 = 0,a2 = 0,a11 = 0,a21 = 0,b21 = 0,bb1 = 0,bb2 = 0,b12 = 0,b22 = 0;
 	int b1 = 0, b2 = 0, b3 = 0, b11 = 0;
 	int i = 0, j = 0, ii = 0, n1 = 0, n2 = 0, n3 = 0, n11 = 0 ,n21 = 0, n31 = 0;
 	int m1 = 0, m2 = 0, m3 = 0, k1 = 0, k2 = 0, maxn = 0;
@@ -37,7 +37,7 @@ int three_stage_h0_h1(double alpha, double delta, double p0,
 	double b[200][3][201]; */
 	int xx=0,yy=0,zz=0;
 
-	struct solution_array *sa;
+	struct solution_array *sa = NULL;
 
 	time_t elapse, start, current, last_time;
 
@@ -154,7 +154,7 @@ int three_stage_h0_h1(double alpha, double delta, double p0,
 						if(b2>m2) b22=m2;
 						for(b3=b2; b3<=m3; b3++) /* do 14 */
 						{
-							b31=b3+1;
+							/* b31=b3+1; */
 							for(a1=b12; a1>=2; a1--) /* do 15 */
 							{
 								a11=a1+1;
@@ -203,7 +203,7 @@ int three_stage_h0_h1(double alpha, double delta, double p0,
 									} /* end do 4 */
 									if(prob[1]>power[1]) continue;
 									if(prob[2]<power[2]) continue;
-									
+
 									/* end loops */
 									for(ii=1; ii<=2; ii++) /* do 40 */
 									{
@@ -242,7 +242,7 @@ int three_stage_h0_h1(double alpha, double delta, double p0,
 									{
 										free(sa);
 									}
-									
+
 									return 0;
 								} /* end do 16 */
 							} /* end do 15 */
@@ -266,4 +266,3 @@ int three_stage_h0_h1(double alpha, double delta, double p0,
 
 	return 0;
 }
-

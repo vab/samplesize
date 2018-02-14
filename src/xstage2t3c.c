@@ -22,22 +22,23 @@ struct solution_array
 
 int two_stage_h0_h1(double alpha, double delta, double p0, double powr, int mail, char *address)
 {
-	int a1=0, a2=0, b1=0, b2=0, a11=0, b11=0, aa1=0, abest=0, maxn=0;
+	int a1=0, b1=0, b2=0, a11=0, b11=0, aa1=0, abest=0, maxn=0;
 	double p[3];
 	double q[3];
 	double sum[3][3];
-	double e1, e2, asn;
+	double e1 = 0.0, e2 = 0.0, asn = 0.0;
 	double power[3];
 	double prob[3];
-	double prob12, prob22;
+	double prob12 = 0.0;
+	double prob22 = 0.0;
 	/*
 	double f[201][3][202];
 	double b[201][3][202];
 	*/
-	int i, j, n1, n2, ii;
-	int n11, m1, m2, k;
+	int i = 0, j = 0, n1 = 0, n2 = 0, ii = 0;
+	int n11 = 0, m1 = 0, m2 = 0, k = 0;
 
-	struct solution_array *sa;
+	struct solution_array *sa = NULL;
 
 	int xx=0,yy=0,zz=0;
 
@@ -60,7 +61,6 @@ int two_stage_h0_h1(double alpha, double delta, double p0, double powr, int mail
 		}
 	}
 
-
 	power[1] = alpha;
 	power[2] = powr;
 	p[1] = p0;
@@ -78,7 +78,6 @@ int two_stage_h0_h1(double alpha, double delta, double p0, double powr, int mail
 		{
 			free(sa);
 		}
-
 
 		return 0;
 	}
@@ -161,7 +160,7 @@ int two_stage_h0_h1(double alpha, double delta, double p0, double powr, int mail
 						prob[1]=1.0-sa->f[n1][1][a1]-sum[1][2];
 						prob[2]=1.0-sa->f[n1][2][a1]-sum[2][2];
 
-				/*		if((prob[1]<=(power[1]-.01)) || (prob[1]>pow(1))) continue; /* Go to 13 */
+				/*		if((prob[1]<=(power[1]-.01)) || (prob[1]>pow(1))) continue; *//* Go to 13 */
 						if(prob[1]>power[1]) continue; /* go to 13 */
 						if(prob[2]<power[2]) continue; /* go to 13 */
 						aa1=a1;
@@ -208,7 +207,7 @@ int two_stage_h0_h1(double alpha, double delta, double p0, double powr, int mail
 							free(sa);
 						}
 
-						
+
 						return 0;
 					}
 				}
@@ -225,7 +224,6 @@ int two_stage_h0_h1(double alpha, double delta, double p0, double powr, int mail
 	{
 		free(sa);
 	}
-
 
 
 	return 0;

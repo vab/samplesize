@@ -51,7 +51,7 @@ int three_stage_h1(double alpha, double delta, double p0, double powr, int mail,
 	{
 		for(yy=0;yy<3;yy++)
 		{
-			for(zz=0;zz<203;zz++)
+			for(zz=0;zz<202;zz++)
 			{
 				sa->f[xx][yy][zz] = (double)0.0;
 				sa->b[xx][yy][zz] = (double)0.0;
@@ -160,7 +160,7 @@ int three_stage_h1(double alpha, double delta, double p0, double powr, int mail,
 							e1=(double)n1+(double)n2*sa->f[n1][1][b11]+(double)n3*sum1[1];
 							e2=(double)n1+(double)n2*sa->f[n1][2][b11]+(double)n3*sum1[2];
 							asn=(e1+e2)/2.0;
-      
+
       							#ifdef DEBUG_PRINT
 							printf("n1= %d b1= %d n2= %d b2= %d n3=%d b3=%d\n",n1,b1,n2,b2,n3,b3);
 							printf("prob1= %f prob2= %f\n",prob[1],prob[2]);
@@ -208,7 +208,3 @@ int three_stage_h1(double alpha, double delta, double p0, double powr, int mail,
 
 	return 0;
 }
-
-
-
-

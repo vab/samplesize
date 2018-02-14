@@ -15,12 +15,11 @@
 
 /*  a C function to return 'n' for the 1 stage model
  *  n is the one stage sample size.  The sample size
- *  of other study types must be less than or equal 
+ *  of other study types must be less than or equal
  *  to n.
  */
 int nstage1(double pow1, double pow2, double p0, double p1)
-{	
-	int ss = 0;
+{
 	int n = 0, i = 0, j = 0;
 	double p[2];
 	double q[2];
@@ -30,9 +29,11 @@ int nstage1(double pow1, double pow2, double p0, double p1)
 	double alpha = 0.0;
 	double beta = 0.0;
 	double b0 = 0.0;
+	/*
 	double size = 0.0;
 	double power = 0.0;
-
+	double ss = 0.0;
+  */
 	alpha = pow1;
 	beta = 1.0 - pow2;
 	p[0] = p0;
@@ -62,15 +63,13 @@ int nstage1(double pow1, double pow2, double p0, double p1)
 		{
 			if( (f[n][0][j]>=b0) && (f[n][1][j]<=beta) )
 			{
-				size=1.0-f[n][0][j];
+	/*			size=1.0-f[n][0][j];
 				power=1.0-f[n][1][j];
-				ss=j++;
+				ss=j++; */
 
 				return n;
 			}
 		}  /* end do 4 */
-
-
 	} /* end do 15 */
 
 

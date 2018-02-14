@@ -34,6 +34,3 @@
 #include "2samp_2stg_type1.h"
 #include "2samp_2stg_type2.h"
 #include "2samp_2stg_type3.h"
-
-
-static void setlimit(void);

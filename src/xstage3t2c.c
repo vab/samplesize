@@ -23,7 +23,6 @@ struct solution_array
 int three_stage_h0(double alpha, double delta, double p0, double powr, int mail, char *address)
 {
 	int b1, b2, b3, b11, b21, b22, b31, b32;
-	int iflag;
 	int i, j, n1, n2, n3, ii;
 	int m1, m2, m3, k2, k3, maxn;
 
@@ -37,7 +36,7 @@ int three_stage_h0(double alpha, double delta, double p0, double powr, int mail,
 	double f[200][2][201];
 	double b[200][2][201];
 	*/
-	struct solution_array *sa;
+	struct solution_array *sa = NULL;
 
 	int xx=0,yy=0,zz=0;
 
@@ -64,8 +63,7 @@ int three_stage_h0(double alpha, double delta, double p0, double powr, int mail,
 
 	start = time(NULL);
 	last_time = 0;
-  
-	iflag=0;
+
 	p[0] = p0;
 	power[0] = alpha;
 	power[1] = powr;
@@ -190,7 +188,7 @@ int three_stage_h0(double alpha, double delta, double p0, double powr, int mail,
 							#ifdef SUPER_DEBUG_PRINT
 							printf("(%d,%d,%d,%d,%d,%d) %10.4f %10.4f\n",n1,b1,n2,b2,n3,b3,prob[0],prob[1]);
 							#endif
-							
+
 							if(mail == 1)
 							{
 								email_results_three_stage_h0(n1,b1,n2,b2,n3,b3,prob[0],prob[1],e1,e2,asn,address);
@@ -205,7 +203,7 @@ int three_stage_h0(double alpha, double delta, double p0, double powr, int mail,
 								free(sa);
 							}
 
-							
+
 							return 0;
 						}
 					}
@@ -231,5 +229,3 @@ int three_stage_h0(double alpha, double delta, double p0, double powr, int mail,
 
 	return 0;
 }
-
-
