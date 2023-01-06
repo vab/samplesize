@@ -9,14 +9,16 @@
 0.9.7 2003.03.06 Development/Bug Fix Release
 0.9.8 2003.03.06 Development/Bug Fix Release
 1.0.0 2003.03.14 Final 1.0 & Bug Fix Release
-   - Significance array address error on xstage3t2 correction
-   - Program flow/logic correction on xstage3t3 correction 
-   - Array address problem in xstage2t2
-   - More security
+    - Significance array address error on xstage3t2 correction
+    - Program flow/logic correction on xstage3t3 correction 
+    - Array address problem in xstage2t2
+    - More security
 1.0.1 2003.03.16 Bug Fix Release
-   - Minor bug fix in three stage email function
-   - Clean up of DEBUG defines
+    - Minor bug fix in three stage email function
+    - Clean up of DEBUG defines
 1.0.2 2003.04.08 Bug Fix Release
-   - Correct of bug which fails to list b+1 as rejection region
+    - Correct of bug which fails to list b+1 as rejection region
 1.0.3 2005.09.06 HTML Formatting fix for Kepner's move to ACS
 1.0.4 2018.01.23 GNU Autotools updates
+1.0.5 2023.01.05 General Maintenance Release
+    - GNU Autotools updates
