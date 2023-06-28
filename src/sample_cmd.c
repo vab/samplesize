@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 
 	printf("Test results for the study designs:\n\n");
 
-	while(p0 < 0.9)
+	while(p0 < 0.8)
 	{
 		printf("Test Values:\n");
 		printf("alpha: %f, delta: %f, p0: %f, power: %f\n\n",alpha,delta,p0,power);
